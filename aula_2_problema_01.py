@@ -1,5 +1,5 @@
 """finalidade: Calculo do IMC
-autor: Diogo
+autor: Diogo da Silveia Ribeiro
 data: 14/02/2023
 Python versão: 3.9.13
 Link do repositorio no GitHub para analisar o código
