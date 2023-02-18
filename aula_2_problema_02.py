@@ -1,9 +1,9 @@
 """Finalidade: Cadastro dos clientes de um sistema de comércio eletrônico.
-Autor: Diogo da Silveia Ribeiro
+Autor: Diogo da Silveira Ribeiro
 data: 14/02/2023
 Versão: 0.1
 Python versão: 3.9.13
-Link do repositorio no GitHub para analisar o código
+Link do repositório no GitHub para analisar o código
  -> https://github.com/Sogoid/AtividadeAula2
 """
 
@@ -35,20 +35,31 @@ cep = input("CEP: ")
 
 senhas = input("Digita uma senha: ")
 
-rep_senhas = input("Digita sua senaha novamente: ")
+rep_senhas = input("Digita sua senha novamente: ")
 
 while senhas != rep_senhas:
     print("\nSenhas diferentes. Tente novamente.\n")
     senhas = input("Digita uma senha: ")
 
-    rep_senhas = input("Digita sua senaha novamente: ")
+    rep_senhas = input("Digita sua senha novamente: ")
+    print()
 else:
     print("Senha cadastrada com sucesso!\n")
 
 print("Cadastro realizado com Sucesso!!\n")
 
-print("*************** Relátorio do cadastro do cliente ***********\n")
+print("*************** Relatório do cadastro do cliente ***********\n")
 
-print(f"Nome: {nome}\nApelido: {apelido}\nGênero: {genero}\nTelefone: {telefone}\nE-mail: {email}")
-print(f"Endereço: {endereco}\nNº: {numero}\nBarrio: {barrio}\nCidade: {cidade}\nEstado: {estado}")
-print(f"CEP: {cep}\nSenha: {senhas}")
+print(f"Nome: {nome}\n"
+      f"Apelido: {apelido}\n"
+      f"Gênero: {genero}\n"
+      f"Telefone: {telefone}\n"
+      f"E-mail: {email}"
+      f"Endereço: {endereco}\n"
+      f"Nº: {numero}\n"
+      f"Barrio: {barrio}\n"
+      f"Cidade: {cidade}\n"
+      f"Estado: {estado}"
+      f"CEP: {cep}\n"
+      f"Senha: {senhas}"
+      )
