@@ -1,6 +1,7 @@
-"""finalidade: Calculo do IMC
-autor: Diogo da Silveia Ribeiro
+"""Finalidade: Cadastro dos clientes de um sistema de comércio eletrônico.
+Autor: Diogo da Silveia Ribeiro
 data: 14/02/2023
+Versão: 0.1
 Python versão: 3.9.13
 Link do repositorio no GitHub para analisar o código
  -> https://github.com/Sogoid/AtividadeAula2
@@ -44,6 +45,7 @@ while senhas != rep_senhas:
 else:
     print("Senha cadastrada com sucesso!\n")
 
+print("Cadastro realizado com Sucesso!!\n")
 
 print("*************** Relátorio do cadastro do cliente ***********\n")
 
