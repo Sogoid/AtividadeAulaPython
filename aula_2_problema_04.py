@@ -15,10 +15,10 @@ nomeProduto = input("Nome do Produto: ")
 codigoProduto = int(input("Código do produto: "))
 valorCompra = float(input("Valor do produto: "))
 desconto = float(input("Valor do desconto: "))
-__lucro_minimo__ = float(input("Entre com o Lucro Mínimo: "))
+lucroMinimo = float(input("Entre com o Lucro Mínimo: "))
 
 # Calculo preço de Venda.
-precoVenda = valorCompra * __lucro_minimo__
+precoVenda = valorCompra * lucroMinimo
 
 precoVenda = valorCompra + precoVenda
 
@@ -33,7 +33,7 @@ lucroReal = precoVenda - precoFinal
 print(f"Nome do Produto       => {nomeProduto}\n"
       f"Código do Produto     => {codigoProduto}\n"
       f"Valor de Compra       => R$ {valorCompra:.2f}\n"
-      f"Lucro mínimo          => {__lucro_minimo__:.0%}\n"
+      f"Lucro mínimo          => {lucroMinimo:.0%}\n"
       f"Valor de Venda        => R$ {precoVenda:.2f}\n"
       f"Lucro de              => R$ {lucro:.2f}\n"
       f"Desconto de           => R$ {desconto:.2f}\n"
