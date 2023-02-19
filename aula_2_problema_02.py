@@ -7,8 +7,9 @@ Link do repositório no GitHub para analisar o código
  -> https://github.com/Sogoid/AtividadeAula2
 """
 
-print("\n** Programa de cadastro de cliente do Comércio Eletrônico **")
-print("******** Informe os dados para cadastro do cliente *********\n")
+print("\n** Programa de cadastro de cliente do Comércio Eletrônico **\n"
+      "******** Informe os dados para cadastro do cliente *********\n"
+      )
 
 nome = input("Nome: ")
 
@@ -39,14 +40,14 @@ rep_senhas = input("Digita sua senha novamente: ")
 
 while senhas != rep_senhas:
     print("\nSenhas diferentes. Tente novamente.\n")
+
     senhas = input("Digita uma senha: ")
 
     rep_senhas = input("Digita sua senha novamente: ")
-    print()
-else:
-    print("Senha cadastrada com sucesso!\n")
 
-print("Cadastro realizado com Sucesso!!\n")
+print("\nSenha cadastrada com sucesso!\n"
+      "Cadastro realizado com Sucesso!!\n"
+      )
 
 print("*************** Relatório do cadastro do cliente ***********\n")
 
@@ -61,5 +62,5 @@ print(f"Nome: {nome}\n"
       f"Cidade: {cidade}\n"
       f"Estado: {estado}"
       f"CEP: {cep}\n"
-      f"Senha: {senhas}"
+      f"Senha: {senhas}\n"
       )
