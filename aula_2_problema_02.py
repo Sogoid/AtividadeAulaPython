@@ -2,7 +2,7 @@
 Autor: Diogo da Silveira Ribeiro
 data: 14/02/2023
 Versão: 0.1
-Python versão: 3.9.13
+Python versão: 3.10.9
 Link do repositório no GitHub para analisar o código
  -> https://github.com/Sogoid/AtividadeAula2
 """
