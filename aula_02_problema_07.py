@@ -12,7 +12,8 @@ print("\n********* Sistema para Locadora de Veículos. ************\n"
       )
 
 # Entrada de dados.
-valorAluguel = float(input("Qual é o valor do aluguel do veículo? => R$ "))
+valorAluguel = float(
+    input("Qual é o valor do aluguel do veículo por dia? => R$ "))
 
 quantidadeVeiculo = int(input("Quantidade de Veículos da frota é => "))
 
@@ -26,7 +27,7 @@ frota = round((quantidadeVeiculo - danificados) + veiculoCompra)
 
 locado = quantidadeVeiculo / 3
 
-faturamento = valorAluguel * quantidadeVeiculo
+faturamento = (valorAluguel * 30) * quantidadeVeiculo
 
 faturamentoAnual = faturamento * 12
 
@@ -74,7 +75,7 @@ print("\n********** Relatório do faturamento por mês. **************\n\n"
       f"Faturamento de um terço Anual é => R${faturamentoTercoAnual:>10}\n"
       f"Multa por atraso no Anuais      => R${atrasaDevolucao:>10}\n"
       "\n\n********** Relatório do estado da frota. **************\n\n"
-      f"Quantidade de veículos danificado no ano => {danificados:>2}\n"
-      f"Quantidade de veículos comprados é       => {veiculoCompra:>2}\n"
-      f"Total da Frota no final do Ano é         => {frota:>2}\n"
+      f"Quantidade de veículos danificado no ano => {danificados:>15}\n"
+      f"Quantidade de veículos comprados é       => {veiculoCompra:>15}\n"
+      f"Total da Frota no final do Ano é         => {frota:>15}\n"
       )
