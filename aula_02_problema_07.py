@@ -13,7 +13,7 @@ print(
 )
 
 # Entrada de dados.
-valorAluguel = float(input("Qual é o valor do aluguel do veículo por dia? => R$ "))
+valorAluguel = float(input("Diária do aluguel do veículo por dia? R$ "))
 
 quantidadeVeiculo = int(input("Quantidade de Veículos da frota é => "))
 
@@ -57,7 +57,8 @@ faturamentoAnual = f"{faturamentoAnual:_.2f}"
 faturamentoAnual = faturamentoAnual.replace(".", ",").replace("_", ".")
 
 faturamentoTercoAnual = f"{faturamentoTercoAnual:_.2f}"
-faturamentoTercoAnual = faturamentoTercoAnual.replace(".", ",").replace("_", ".")
+
+faturamentoTercoAno = faturamentoTercoAnual.replace(".", ",").replace("_", ".")
 
 atrasaDevolucao = f"{atrasaDevolucao:_.2f}"
 atrasaDevolucao = atrasaDevolucao.replace(".", ",").replace("_", ".")
@@ -72,7 +73,7 @@ print(
     f"Multa por atraso no mês         => R${atrasaDevolucoes:>13}\n"
     "\n\n********** Relatório do faturamento por Ano. **************\n\n"
     f"Faturamento Anual Previsto é    => R${faturamentoAnual:>13}\n"
-    f"Faturamento de um terço Anual é => R${faturamentoTercoAnual:>13}\n"
+    f"Faturamento de um terço Anual é => R${faturamentoTercoAno:>13}\n"
     f"Multa por atraso no Anuais      => R${atrasaDevolucao:>13}\n"
     "\n\n************ Relatório do estado da frota. ****************\n\n"
     f"Quantidade de veículos danificado no ano => {danificados:>2}\n"
