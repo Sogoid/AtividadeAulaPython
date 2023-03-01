@@ -7,16 +7,9 @@ Link do repositório no GitHub para analisar o código
  -> https://github.com/Sogoid/AtividadeAula2
 """
 
-<<<<<<< HEAD
 print("\n********** Sistema para Locadora de Veículos. *************\n"
       "*********** Informe os dados para o Cálculo. **************\n"
       )
-=======
-print(
-    "\n********* Sistema para Locadora de Veículos. ************\n"
-    "*********** Informe os dados para o Cálculo. **************\n"
-)
->>>>>>> 27be0f8 (Atualizações)
 
 # Entrada de dados.
 valorAluguel = float(input("Qual é o valor do aluguel do veículo por dia? => R$ "))
