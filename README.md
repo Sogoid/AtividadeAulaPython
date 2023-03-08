@@ -1,1 +1,3 @@
-# ATIVIDADE AULA 2
+# ATIVIDADE AULA PROGRAMAÇÃO PYTHON
+
+### *Atividade da Aula 2
