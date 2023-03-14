@@ -18,15 +18,41 @@ n3 = float(input("Entre com a nota da N3 => "))
 
 media = (n1 + n2 + n3) / 3
 
-if media == 4.0 and media > 4.0 and media < 7.5:
-    print(f"Aluno esta de Recuperação nota => {media}")
-    print("\n***INICIO DA PROVA FINAL***\n")
+if media > 4.0 and media < 7.5:
+
+    print(f"\nAluno esta de Recuperação nota => {media}")
+
+    print("\n\N{SNAKE} INICIO DA PROVA FINAL \N{SNAKE}\n")
+
     pf = float(input("Entre com a nota da prova final => "))
-    
-    if pf == 7.5 or pf > 7.5:
-        print(f"Aluno aprovado com nota => {pf}")
+
+    pfm = (pf + media) / 2
+
+    if pfm == 7.5 or pfm > 7.5:
+        print(f"\n\N{SNAKE} Aluno aprovado com nota => {pfm}\n")
+
+    else:
+        print(f"\n\N{SNAKE} Aluno reprovado com nota => {pfm}\n")
+        while True:
+            try:
+                ponto_extra = input("Quer dar 1 ponto extra! SIM OU NÃO => ")
+                if ponto_extra != "":
+                    break
+            except ValueError:
+                print("Escolha uma opção SIM ou NÃO.")
+
+        ponto_extra = ponto_extra.upper()
+        ponto_extra = ponto_extra.strip()
+
+        if ponto_extra == "SIM":
+            pfm = pfm + 1
+            if pfm >= 7.5:
+                print(f"\n\N{SNAKE} Aluno aprovado com nota => {pfm}\n")
+            else:
+                print(f"\n\N{SNAKE} Aluno reprovado com nota => {pfm}\n")
 
 elif media == 7.5 or media > 7.5:
-    print(f"Aluno aprovado com nota => {media}")
+    print(f"\n\N{SNAKE} Aluno aprovado com nota => {media}\n")
+
 else:
-    print(f"Aluno reprovado com nota => {media}")
+    print(f"\n\N{SNAKE} Aluno reprovado com nota => {media}\n")
