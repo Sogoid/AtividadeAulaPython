@@ -20,10 +20,6 @@ print(f"Digite um número para Y => {y} ")
 z = round(random.randrange(1, 10 + 1))
 print(f"Digite um número para Z => {z}")
 
-# x = int(input("Digite o número para X => "))
-# y = int(input("Digite o número para Y => "))
-# z = int(input("Digite o número para Z => "))
-
 print("\n*********** Ordem crescente *************\n")
 
 if x <= y and x <= z and y <= z:
