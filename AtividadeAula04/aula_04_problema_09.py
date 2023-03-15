@@ -9,8 +9,8 @@ Link do repositório no GitHub para analisar o código
 import random
 
 print(
-    "\n*********** Sistema para identificar diferença entre número. *************\n"
-    "********************** Informe as número aleatório. **********************\n"
+    "\n******** Sistema para identificar diferença entre número. *********\n"
+    "***************** Informe as número aleatório. ********************\n"
 )
 
 x = round(random.randrange(1, 100 + 1))
