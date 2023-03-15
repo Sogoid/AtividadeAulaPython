@@ -13,18 +13,53 @@ print(
     "********************** Informe as número aleatório. *******************\n"
 )
 
-x = round(random.randrange(1, 100 + 1))
+x = round(random.randrange(1, 10 + 1))
 print(f"Digite um número para X => {x} ")
-y = round(random.randrange(1, 100 + 1))
+y = round(random.randrange(1, 10 + 1))
 print(f"Digite um número para Y => {y} ")
-z = round(random.randrange(1, 100 + 1))
+z = round(random.randrange(1, 10 + 1))
 print(f"Digite um número para Z => {z}")
 
-print("\n*********** Ordem crescente e decrescente *************\n")
+# x = int(input("Digite o número para X => "))
+# y = int(input("Digite o número para Y => "))
+# z = int(input("Digite o número para Z => "))
 
-if x > y and x > z:
-    print(f"O maior número é X => {x}")
-elif y > x and y > z:
-    print(f"O maior número é Y => {y}")
-elif z > x and x > y:
-    print(f"O maior número é Z => {z}")
+print("\n*********** Ordem crescente *************\n")
+
+if x <= y and x <= z and y <= z:
+    print(f"Os números em ordem crescente são: X, Y, Z => {x}, {y}, {z}")
+
+elif x <= y and x <= z and z <= y:
+    print(f"Os números em ordem crescente são: X, Z, Y => {x}, {z}, {y}")
+
+elif y <= x and y <= z and x <= z:
+    print(f"Os números em ordem crescente são: Y, X, Z => {y}, {x}, {z}")
+
+elif y <= x and y <= z and z <= x:
+    print(f"Os números em ordem crescente são: Y, Z, X => {y}, {z}, {x}")
+
+elif z <= x and z <= y and x <= y:
+    print(f"Os números em ordem crescente são: Z, X, Y => {z}, {x}, {y}")
+
+elif z <= x and z <= y and y <= x:
+    print(f"Os números em ordem crescente são: Z, Y, X => {z}, {y}, {x}")
+
+print("\n********** Ordem decrescente ************\n")
+
+if x >= y and x >= z and y >= z:
+    print(f"Os números em ordem decrescente são: X, Y, Z => {x}, {y}, {z}")
+
+elif x >= y and x >= z and z >= y:
+    print(f"Os números em ordem decrescente são: X, Z, Y => {x}, {z}, {y}")
+
+elif y >= x and y >= z and x >= z:
+    print(f"Os números em ordem decrescente são: Y, X, Z => {y}, {x}, {z}")
+
+elif y >= x and y >= z and z >= x:
+    print(f"Os números em ordem decrescente são: Y, Z, X => {y}, {z}, {x}")
+
+elif z >= x and z >= y and x >= y:
+    print(f"Os números em ordem decrescente são: Z, X, Y => {z}, {x}, {y}")
+
+elif z >= x and z >= y and y >= x:
+    print(f"Os números em ordem decrescente são: Z, Y, X => {z}, {y}, {x}")
