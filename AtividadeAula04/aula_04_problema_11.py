@@ -33,7 +33,15 @@ print("*************** Resultado medico **********************\n")
 
 if 19.1 >= imc and imc <= 25.8:
     print(f"Paciente: {nome!r} esta com peso normal com {imc:.2f}.\n")
-elif imc > 25.8:
+
+elif imc >= 25.8 and imc <= 27.3:
+    print(f"Paciente: {nome!r} esta um pouco acima do peso com {imc:.2f}.\n")
+
+elif imc >= 27.4 and imc <= 32.3:
+    print(f"Paciente: {nome!r} esta muito acima do peso com {imc:.2f}.\n")
+
+elif imc > 32.3:
     print(f"Paciente: {nome!r} esta acima do peso com {imc:.2f}.\n")
+
 else:
     print(f"Paciente: {nome!r} esta abaixo do peso com {imc:.2f}.\n")
