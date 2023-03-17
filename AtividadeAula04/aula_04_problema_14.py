@@ -17,12 +17,24 @@ nuns = []
 
 while len(nuns) <= 10:
 
-    numero = round(random.randrange(1, 20 + 1))
-    print(f"Digite um número => {numero}\n")
+    numero = random.randint(1, 20)
+    nuns.append(numero)
 
-if numero % 2 == 0:
-    nuns.append(numero) 
-    print("O número é par\n")
+__nuns_new__ = str(nuns)[1:-1]
+print(f"Números sorteados são => {__nuns_new__}\n")
 
-else:
-    print("O número é impar\n")
+par = sorted(filter(lambda x: x % 2 == 0, nuns))
+__par_new__ = str(par)[1:-1]
+print(f"Números pares são => {__par_new__}\n")
+
+impar = sorted(filter(lambda x: x % 2 != 0, nuns))
+__impar_new__ = str(impar)[1:-1]
+print(f"Números impares são => {__impar_new__}")
+
+# if numero % 2 == 0:
+
+#    nuns.append(numero)
+#    print("O número é par\n")
+
+# else:
+#    print("O número é impar\n")
