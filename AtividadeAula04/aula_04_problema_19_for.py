@@ -32,10 +32,10 @@ for __cont__ in range(5):
 
     print(f"*************** Resultado medico {__cont__}******************\n")
 
-    if imc >= 19.1 and imc <= 25.8:
+    if imc >= 18.5 and imc <= 24.9:
         print(f"Paciente: {nome!r} esta com peso normal com {imc:.2f}.\n")
 
-    elif imc >= 25.8 and imc <= 27.3:
+    elif imc >= 25 and imc <= 27.3:
         print(f"Paciente: {nome!r}"
               f"esta um pouco acima do peso com {imc:.2f}.\n")
 
