@@ -94,6 +94,12 @@ print(
     f"Distancia percorrida foi de       =>   {distancia:.2f}km\n"
     f"Rendamento de combustível por km  =>   {rendimento:>7}Lt/Km\n"
 )
-print(format_tempo(f"Tempo gasto foi de               => {tempo:>6}hs\n"))
-print(format_virgula(f"total de litros gasto foi =>  {litros_usados:>6}LT\n"))
-print(format_virgula(f"Total do valor gasto foi de    =>R$ {total_gasto}\n"))
+
+formatted_string = format_tempo(tempo)
+print(f"Tempo gasto foi de               => {formatted_string:>6}hs\n")
+
+formatted_string = format_virgula(litros_usados)
+print((f"total de litros gasto foi =>  {formatted_string:>6}LT\n"))
+
+formatted_string = format_virgula(total_gasto)
+print(f"Total do valor gasto foi de    =>R$ {formatted_string}\n")
