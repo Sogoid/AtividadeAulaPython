@@ -16,7 +16,19 @@ def calculo(peso1, altura1):
 
 
 def relatorio():
-    """Relatório sobre o paciente"""
+    """Relatório sobre o paciente
+    Mostra em qual o valor de IMC com informações se o mesmo esta
+    acima ou não do peso.
+    """
+
+    print(f"\n******** Ficha médica do paciente {__cont__} ******** \n")
+
+    print(
+        f"Paciente: {nome}\n"
+        f"Idade: {__idade__}\n"
+        f"Peso: {peso}\n"
+        f"Altura: {altura:.2f}\n"
+    )
 
     print(f"Valor do IMC é: {imc:.2f}\n")
 
@@ -26,7 +38,7 @@ def relatorio():
         print(f"Paciente: {nome!r} esta com peso normal com {imc:.2f}.\n")
 
     elif imc >= 25 and imc <= 27.3:
-        print(f"Paciente: {nome!r}"
+        print(f"Paciente: {nome!r}" 
               f"esta um pouco acima do peso com {imc:.2f}.\n")
 
     elif imc >= 27.4 and imc <= 32.3:
@@ -50,12 +62,12 @@ print("Programa para Calculo do IMC dos Paciente")
 linha_titulo()
 
 pessoas = [
-    "Wandson Ramos",
+    "Wanderson Ramos",
     "Gabriel Cesar",
     "Caio Rego",
     "Diogo Nogueira",
     "Ana Maria",
-    "Cristiano Araujo",
+    "Cristiano Araújo",
 ]
 
 for __cont__ in range(5):
@@ -76,14 +88,5 @@ for __cont__ in range(5):
     print(f"Idade: {__idade__}")
 
     imc = calculo(peso, altura)
-
-    print(f"\n******** Ficha médica do paciente {__cont__} ******** \n")
-
-    print(
-        f"Paciente: {nome}\n"
-        f"Idade: {__idade__}\n"
-        f"Peso: {peso}\n"
-        f"Altura: {altura:.2f}\n"
-    )
 
     relatorio()
