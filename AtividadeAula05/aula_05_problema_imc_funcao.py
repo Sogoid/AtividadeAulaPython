@@ -1,4 +1,4 @@
-"""Finalidade: Programa para Calculo do IMC dos Paciente usando função
+"""Finalidade: Programa para cálculo do IMC dos pacientes usando função
 autor: Diogo da Silveira Ribeiro
 data: 17/03/2023
 Versão: 0.4
@@ -17,7 +17,7 @@ def calculo(peso1, altura1):
 
 def relatorio():
     """Relatório sobre o paciente
-    Mostra em qual o valor de IMC com informações se o mesmo esta
+    Mostra em qual o valor de IMC com informações se o mesmo está
     acima ou não do peso.
     """
 
@@ -34,14 +34,14 @@ def relatorio():
 
     print(f"********  Resultado medico {__cont__} ******** \n")
 
-    if imc >= 18.5 and imc <= 24.9:
+    if 18.5 <= imc <= 24.9:
         print(f"Paciente: {nome!r} esta com peso normal com {imc:.2f}.\n")
 
-    elif imc >= 25 and imc <= 27.3:
+    elif 25 <= imc <= 27.3:
         print(f"Paciente: {nome!r}" 
               f"esta um pouco acima do peso com {imc:.2f}.\n")
 
-    elif imc >= 27.4 and imc <= 32.3:
+    elif 27.4 <= imc <= 32.3:
         print(f"Paciente: {nome!r} esta muito acima do peso com {imc:.2f}.\n")
 
     elif imc > 32.3:

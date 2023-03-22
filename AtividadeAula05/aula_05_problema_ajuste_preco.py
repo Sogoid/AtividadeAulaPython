@@ -91,7 +91,7 @@ while __cont__ <= 9:
         __lucro_minimo__,
     )
 
-    # Formatação dos valores na saídas.
+    # Formatação dos valores nas saídas.
 
     print(
         f"\n****** Relatório do ajuste de Preços.{__cont__} ********\n\n"

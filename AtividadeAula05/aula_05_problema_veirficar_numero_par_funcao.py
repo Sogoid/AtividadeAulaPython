@@ -10,7 +10,7 @@ import random
 
 
 def titulo_sistema(tmsg):
-    """Função para mostrar o titulo através da função."""
+    """Função para mostrar o título através da função."""
     linha_titulo()
     print(f"\n{tmsg}\n")
     linha_titulo()

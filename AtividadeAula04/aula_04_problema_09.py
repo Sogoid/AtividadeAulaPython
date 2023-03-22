@@ -26,7 +26,7 @@ if x > y and x > z:
     print(f"O maior número é X => {x}")
 elif y > x and y > z:
     print(f"O maior número é Y => {y}")
-elif z > x and x > y:
+elif z > x > y:
     print(f"O maior número é Z => {z}")
 
 print("\n*********** Qual é o menor número? *************\n")
@@ -35,14 +35,14 @@ if x < y and x < z:
     print(f"O menor número é X => {x}")
 elif y < x and y < z:
     print(f"O menor número é Y => {y}")
-elif z < x and x < y:
+elif z < x < y:
     print(f"O menor número é Z => {z}")
 
 print("\n*********** Qual é número do meio? *************\n")
 
-if x > y and x < z:
+if y < x < z:
     print(f"O número do meio é X => {x}\n")
-elif y < x and y > z:
+elif x > y > z:
     print(f"O número do meio é Y => {y}\n")
 elif z > x and x < y:
     print(f"O número do meio é Z => {z}\n")
