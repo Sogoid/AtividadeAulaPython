@@ -23,28 +23,35 @@ def get_format(num):
     return num
 
 
-def calculo(__valor_compra__, __desconto__, __lucro_minimo__):
+def calculo_prec_venda(__valor_compra__, __lucro_minimo__):
     """Calculo preço de Venda."""
 
-    preco_venda = __valor_compra__ * __lucro_minimo__
-    preco_venda = __valor_compra__ + preco_venda
-    lucro = preco_venda - __valor_compra__
-    desconto_valor = preco_venda * __desconto__
-    preco_final = preco_venda - desconto_valor
-    lucro_real = preco_venda - preco_final
+    __prec_lucro_min__ = __valor_compra__ * __lucro_minimo__
+    __prec_venda__ = __valor_compra__ + __prec_lucro_min__
+    return __prec_venda__
 
-    return (
-        preco_venda,
-        lucro,
-        lucro_real,
-        preco_final,
-    )
+
+def lucro_venda(__valor_compra__, __prec_venda__):
+    """Calculo lucro de venda."""
+    __lucro__ = __prec_venda__ - __valor_compra__
+    return __lucro__
+
+
+def calculo_desconto(prec_venda, __desconto__):
+    """Calculo do desconto."""
+    desconto_valor = prec_venda * __desconto__
+    __prec_final__ = prec_venda - desconto_valor
+    return __prec_final__
+
+
+def luc_final(prec_venda, __prec_final__):
+    __lucro_real__ = prec_venda - __prec_final__
+    return __lucro_real__
 
 
 linha_titulo()
 print("Sistema de Ajuste de Preços.")
 linha_titulo()
-
 
 produto = [
     "Pão",
@@ -70,34 +77,37 @@ __lucro_minimo__ = 0.33
 while __cont__ <= 9:
     __cont__ = __cont__ + 1
 
-    print(f"******* Informe os dados do Produto. {__cont__} ********\n")
+    print(f"******* Informe os dados do Produto. N°{__cont__} ********\n")
+
+    __codigo_produto__ = __cont__
+    print(f"Código do produto: {__codigo_produto__}")
 
     nome_produto = produto[random.randrange(len(produto))]
-    print(f"Nome do Produto: {nome_produto}")
-
-    __codigo_produto__ = int(random.randint(1, 10))
-    print(f"Código do produto: {__codigo_produto__}")
+    print(f"Nome do Produto: {nome_produto.upper()}")
 
     __valor_compra__ = float(random.uniform(1.5, 20))
     print(f"Valor do produto: R$ {__valor_compra__:.2f}")
 
-    print(f"Valor do desconto: {__desconto__}")
+    print(f"Valor do desconto: {__desconto__:.0%}")
 
-    print(f"Entre com o Lucro Mínimo: {__lucro_minimo__}")
+    print(f"Entre com o Lucro Mínimo: {__lucro_minimo__:.0%}")
 
-    preco_venda, lucro, lucro_real, preco_final = calculo(
-        __valor_compra__,
-        __desconto__,
-        __lucro_minimo__,
-    )
+    preco_venda = calculo_prec_venda(__valor_compra__, __lucro_minimo__)
+
+    lucro = lucro_venda(__valor_compra__, preco_venda)
+
+    prec_final = calculo_desconto(preco_venda, __desconto__)
+
+    lucro_real = luc_final(preco_venda, prec_final)
 
     # Formatação dos valores nas saídas.
 
     print(
-        f"\n****** Relatório do ajuste de Preços.{__cont__} ********\n\n"
-        f"Nome do Produto       => {nome_produto.upper()}\n"
+        f"\n****** Relatório do ajuste de Preços. N°{__cont__} ********\n\n"
         f"Código do Produto     => {__codigo_produto__}\n"
+        f"Nome do Produto       => {nome_produto.upper()}\n"
         f"Lucro mínimo          => {__lucro_minimo__:.0%}\n"
+        f"Desconto de           => {__desconto__:.0%}\n"
     )
 
     formatted_string = get_format(__valor_compra__)
@@ -109,10 +119,7 @@ while __cont__ <= 9:
     formatted_string = get_format(preco_venda)
     print(f"Valor de Venda        => R$ {formatted_string:>5}")
 
-    formatted_string = get_format(__desconto__)
-    print(f"Desconto de           => R$ {formatted_string:>5}")
-
-    formatted_string = get_format(preco_final)
+    formatted_string = get_format(prec_final)
     print(f"Preço Final de Vendas => R$ {formatted_string:>5}")
 
     formatted_string = get_format(lucro_real)

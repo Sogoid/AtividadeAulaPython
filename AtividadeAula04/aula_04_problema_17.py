@@ -16,53 +16,53 @@ while __cont__ <= 9:
 
     print(f"********* Informe os dados do Produto. {__cont__} ***********\n")
 
-    nomeProduto = input("Nome do Produto: ")
-    codigoProduto = int(input("Código do produto: "))
-    valorCompra = float(input("Valor do produto: "))
-    desconto = float(input("Valor do desconto: "))
-    lucroMinimo = float(input("Entre com o Lucro Mínimo: "))
+    codigo_produto = int(input("Código do produto: "))
+    nome_produto = input("Nome do Produto: ")
+    valor_compra = float(input("Valor do produto: "))
+    desconto = 0.10
+    print(f"Valor do desconto: {desconto:.0%}")
+    lucro_minimo = 0.33
+    print(f"Entre com o Lucro Mínimo: {lucro_minimo:.0%}")
 
     # Calculo preço de Venda.
-    precoVenda = valorCompra * lucroMinimo
+    preco_venda = valor_compra * lucro_minimo
 
-    precoVenda = valorCompra + precoVenda
+    preco_venda = valor_compra + preco_venda
 
-    lucro = precoVenda - valorCompra
+    lucro = preco_venda - valor_compra
 
-    desconto = precoVenda * desconto
+    desconto_new = preco_venda * desconto
 
-    precoFinal = precoVenda - desconto
+    preco_final = preco_venda - desconto_new
 
-    lucroReal = precoVenda - precoFinal
+    lucro_real = preco_venda - preco_final
 
-    # Formatação dos valores na saídas.
+    # Formatação dos valores nas saídas.
 
-    valorCompra = f"{valorCompra:_.2f}"
-    valorCompra = valorCompra.replace(".", ",").replace("_", ".")
+    valor_compra = f"{valor_compra:_.2f}"
+    valor_compra = valor_compra.replace(".", ",").replace("_", ".")
 
-    precoVenda = f"{precoVenda:_.2f}"
-    precoVenda = precoVenda.replace(".", ",").replace("_", ".")
+    preco_venda = f"{preco_venda:_.2f}"
+    preco_venda = preco_venda.replace(".", ",").replace("_", ".")
+
     lucro = f"{lucro:_.2f}"
     lucro = lucro.replace(".", ",").replace("_", ".")
 
-    desconto = f"{desconto:_.2f}"
-    desconto = desconto.replace(".", ",").replace("_", ".")
+    preco_final = f"{preco_final:_.2f}"
+    preco_final = preco_final.replace(".", ",").replace("_", ".")
 
-    precoFinal = f"{precoFinal:_.2f}"
-    precoFinal = precoFinal.replace(".", ",").replace("_", ".")
-
-    lucroReal = f"{lucroReal:_.2f}"
-    lucroReal = lucroReal.replace(".", ",").replace("_", ".")
+    lucro_real = f"{lucro_real:_.2f}"
+    lucro_real = lucro_real.replace(".", ",").replace("_", ".")
 
     print(
-          f"\n******** Relatório do ajuste de Preços.{__cont__} **********\n\n"
-          f"Nome do Produto       => {nomeProduto.upper()}\n"
-          f"Código do Produto     => {codigoProduto}\n"
-          f"Lucro mínimo          =>    {lucroMinimo:.0%}\n"
-          f"Valor de Compra       => R$ {valorCompra:>5}\n"
-          f"Lucro de              => R$ {lucro:>5}\n"
-          f"Valor de Venda        => R$ {precoVenda:>5}\n"
-          f"Desconto de           => R$ {desconto:>5}\n"
-          f"Preço Final de Vendas => R$ {precoFinal:>5}\n"
-          f"Lucro Real            => R$ {lucroReal:>5}\n"
-         )
+        f"\n******** Relatório do ajuste de Preços.{__cont__} **********\n\n"
+        f"Código do Produto     => {codigo_produto}\n"
+        f"Nome do Produto       => {nome_produto.upper()}\n"
+        f"Lucro mínimo          =>    {lucro_minimo:.0%}\n"
+        f"Desconto de           =>    {desconto:.0%}\n"
+        f"Valor de Compra       => R$ {valor_compra:>5}\n"
+        f"Lucro de              => R$ {lucro:>5}\n"
+        f"Valor de Venda        => R$ {preco_venda:>5}\n"
+        f"Preço Final de Vendas => R$ {preco_final:>5}\n"
+        f"Lucro Real            => R$ {lucro_real:>5}\n"
+    )

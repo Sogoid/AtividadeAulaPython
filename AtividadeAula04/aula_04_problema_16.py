@@ -35,14 +35,14 @@ while __cont__ <= 7:
 
     print(f"*************** Resultado medico {__cont__}******************\n")
 
-    if imc >= 19.1 and imc <= 25.8:
+    if 19.1 <= imc <= 25.8:
         print(f"Paciente: {nome!r} esta com peso normal com {imc:.2f}.\n")
 
-    elif imc >= 25.8 and imc <= 27.3:
+    elif 25.8 <= imc <= 27.3:
         print(f"Paciente: {nome!r}"
               f"esta um pouco acima do peso com {imc:.2f}.\n")
 
-    elif imc >= 27.4 and imc <= 32.3:
+    elif 27.4 <= imc <= 32.3:
         print(f"Paciente: {nome!r} esta muito acima do peso com {imc:.2f}.\n")
 
     elif imc > 32.3:
