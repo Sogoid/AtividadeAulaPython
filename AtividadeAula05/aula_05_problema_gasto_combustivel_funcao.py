@@ -21,12 +21,6 @@ def linha_titulo():
     print("*" * __nun_letras__)
 
 
-__titulo__ = "Sistema para Cálculo de Combustível."
-__nun_letras__ = len(__titulo__)
-
-titulo_sistema(__titulo__)
-
-
 def calculo_distancia(__tempo__, __velocidade__):
     """Função que vai calcular a distância"""
     __distancia__ = __tempo__ * __velocidade__
@@ -44,6 +38,54 @@ def calculo_lt_usados(__distancia__, __rendimento__):
     __litros_usados__ = __distancia__ / __rendimento__
     return __litros_usados__
 
+
+def format_tempo(num):
+    """Função para formatar tempo"""
+    num = f"{num:_.2f}"
+    num = num.replace(".", ":")
+    num = num.replace("_", ".")
+    return num
+
+
+def format_virgula(palavra):
+    """Função para formatar tempo"""
+    palavra = f"{palavra:_.2f}"
+    palavra = palavra.replace(".", ",")
+    palavra = palavra.replace("_", ".")
+    return palavra
+
+
+def gera_relatorio():
+    """Função para gerar relatorio"""
+    sub_titulo: str = "Relatório de gastos na viagem."
+    __nun_letra__ = len(sub_titulo)
+
+    titulo_sistema(sub_titulo)
+
+    formatted_string = format_virgula(velocidade)
+    print(f"\nVelocidade média é               =>   {formatted_string:>6}Lt/Km")
+
+    formatted_string = format_virgula(distancia)
+    print(f"Distancia percorrida foi de      =>   {formatted_string:>6}Lt/Km")
+
+    formatted_string = format_virgula(rendimento)
+    print(f"Rendamento de combustível por km =>   {formatted_string:>6}Lt/Km")
+
+    formatted_string = format_tempo(tempo)
+    print(f"Tempo gasto foi de               => {formatted_string:>8}hs")
+
+    formatted_string = format_virgula(litros_usados)
+    print(f"total de litros gasto foi        =>  {formatted_string:>7}LT")
+
+    formatted_string = format_virgula(total_gasto)
+    print(f"Total do valor gasto foi de      =>R$ {formatted_string:>6}\n")
+    return
+
+
+__titulo__ = "Sistema para Cálculo de Combustível."
+__nun_letras__ = len(__titulo__)
+
+titulo_sistema(__titulo__)
 
 for x in range(6):
     __sub_titulo__ = f"Cadastro de de viagens. N° {x}"
@@ -76,41 +118,4 @@ for x in range(6):
 
     total_gasto = litros * valor_litro
 
-    # Formatação dos valores nas saídas.
-
-
-    def format_tempo(num):
-        """Função para formatar tempo"""
-        num = f"{num:_.2f}"
-        num = num.replace(".", ":")
-        num = num.replace("_", ".")
-        return num
-
-
-    def format_virgula(palavra):
-        """Função para formatar tempo"""
-        palavra = f"{palavra:_.2f}"
-        palavra = palavra.replace(".", ",")
-        palavra = palavra.replace("_", ".")
-        return palavra
-
-
-    __sub_titulo__ = "Relatório de gastos na viagem."
-    __nun_letra__ = len(__sub_titulo__)
-
-    titulo_sistema(__sub_titulo__)
-
-    print(
-        f"\nVelocidade média é               => {velocidade:>7}h/Km\n"
-        f"Distancia percorrida foi de      =>   {distancia:.2f}km\n"
-        f"Rendamento de combustível por km =>   {rendimento:>6}Lt/Km"
-    )
-
-    formatted_string = format_tempo(tempo)
-    print(f"Tempo gasto foi de               => {formatted_string:>8}hs")
-
-    formatted_string = format_virgula(litros_usados)
-    print(f"total de litros gasto foi        =>  {formatted_string:>7}LT")
-
-    formatted_string = format_virgula(total_gasto)
-    print(f"Total do valor gasto foi de      =>R$ {formatted_string}\n")
+    gera_relatorio()
