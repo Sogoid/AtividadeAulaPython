@@ -9,22 +9,25 @@ Link do repositório no GitHub para analisar o código
 import random
 
 
-def titulo_sistema(tmsg):
+def len_titulo(titulo):
     """Função para mostrar o título através da função."""
-    linha_titulo()
-    print(f"\n{tmsg}\n")
-    linha_titulo()
+    return len(titulo)
 
 
-def linha_titulo():
+def linha_titulo(titulo):
     """Criação de linha para formar titulo"""
+    __nun_letras__ = len_titulo(titulo)
     print("*" * __nun_letras__)
 
 
-__titulo__ = "Sistema para verificação se o número e impar ou par."
-__nun_letras__ = len(__titulo__)
+def titulo_sistema(tmsg):
+    """Função para mostrar o título através da função."""
+    linha_titulo(tmsg)
+    print(f"\n{tmsg}\n")
+    linha_titulo(tmsg)
 
-titulo_sistema(__titulo__)
+
+titulo_sistema("Sistema para verificação se o número e impar ou par.")
 
 nuns = []
 
@@ -42,4 +45,4 @@ print(f"Números pares são => {__par_new__}\n")
 
 impar = sorted(filter(lambda x: x % 2 != 0, nuns))
 __impar_new__ = str(impar)[1:-1]
-print(f"Números impares são => {__impar_new__}")
+print(f"Números impares são => {__impar_new__}\n")

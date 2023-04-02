@@ -9,9 +9,22 @@ Link do repositório no GitHub para analisar o código
 import random
 
 
-def linha_titulo():
+def len_titulo(titulo):
+    """Função para mostrar o título através da função."""
+    return len(titulo)
+
+
+def linha_titulo(titulo):
     """Criação de linha para formar titulo"""
-    print("*" * 42)
+    __nun_letras__ = len_titulo(titulo)
+    print("*" * __nun_letras__)
+
+
+def titulo_sistema(tmsg):
+    """Função para mostrar o título através da função."""
+    linha_titulo(tmsg)
+    print(f"\n{tmsg}\n")
+    linha_titulo(tmsg)
 
 
 def get_format(num):
@@ -45,13 +58,40 @@ def calculo_desconto(prec_venda, __desconto__):
 
 
 def luc_final(prec_venda, __prec_final__):
+    """Calculo do lucro final"""
     __lucro_real__ = prec_venda - __prec_final__
     return __lucro_real__
 
 
-linha_titulo()
-print("Sistema de Ajuste de Preços.")
-linha_titulo()
+def gera_relatorio():
+    """Função para gerar relatório"""
+
+    titulo_sistema(f"Relatório do ajuste de Preços. N°{__cont__}")
+
+    print(
+        f"\nCódigo do Produto     => {__codigo_produto__}\n"
+        f"Nome do Produto       => {nome_produto.upper()}\n"
+        f"Lucro mínimo          => {__lucro_minimo__:.0%}\n"
+        f"Desconto de           => {__desconto__:.0%}\n"
+    )
+
+    formatted_string = get_format(__valor_compra__)
+    print(f"Valor de Compra       => R$ {formatted_string:>5}")
+
+    formatted_string = get_format(lucro)
+    print(f"Lucro de              => R$ {formatted_string:>5}")
+
+    formatted_string = get_format(preco_venda)
+    print(f"Valor de Venda        => R$ {formatted_string:>5}")
+
+    formatted_string = get_format(prec_final)
+    print(f"Preço Final de Vendas => R$ {formatted_string:>5}")
+
+    formatted_string = get_format(lucro_real)
+    print(f"Lucro Real            => R$ {formatted_string:>5}\n")
+
+
+titulo_sistema("Sistema de Ajuste de Preços.")
 
 produto = [
     "Pão",
@@ -77,10 +117,10 @@ __lucro_minimo__ = 0.33
 while __cont__ <= 9:
     __cont__ = __cont__ + 1
 
-    print(f"******* Informe os dados do Produto. N°{__cont__} ********\n")
+    titulo_sistema(f"Informe os dados do Produto. N°{__cont__}")
 
     __codigo_produto__ = __cont__
-    print(f"Código do produto: {__codigo_produto__}")
+    print(f"\nCódigo do produto: {__codigo_produto__}")
 
     nome_produto = produto[random.randrange(len(produto))]
     print(f"Nome do Produto: {nome_produto.upper()}")
@@ -90,7 +130,7 @@ while __cont__ <= 9:
 
     print(f"Valor do desconto: {__desconto__:.0%}")
 
-    print(f"Entre com o Lucro Mínimo: {__lucro_minimo__:.0%}")
+    print(f"Entre com o Lucro Mínimo: {__lucro_minimo__:.0%}\n")
 
     preco_venda = calculo_prec_venda(__valor_compra__, __lucro_minimo__)
 
@@ -100,27 +140,4 @@ while __cont__ <= 9:
 
     lucro_real = luc_final(preco_venda, prec_final)
 
-    # Formatação dos valores nas saídas.
-
-    print(
-        f"\n****** Relatório do ajuste de Preços. N°{__cont__} ********\n\n"
-        f"Código do Produto     => {__codigo_produto__}\n"
-        f"Nome do Produto       => {nome_produto.upper()}\n"
-        f"Lucro mínimo          => {__lucro_minimo__:.0%}\n"
-        f"Desconto de           => {__desconto__:.0%}\n"
-    )
-
-    formatted_string = get_format(__valor_compra__)
-    print(f"Valor de Compra       => R$ {formatted_string:>5}")
-
-    formatted_string = get_format(lucro)
-    print(f"Lucro de              => R$ {formatted_string:>5}")
-
-    formatted_string = get_format(preco_venda)
-    print(f"Valor de Venda        => R$ {formatted_string:>5}")
-
-    formatted_string = get_format(prec_final)
-    print(f"Preço Final de Vendas => R$ {formatted_string:>5}")
-
-    formatted_string = get_format(lucro_real)
-    print(f"Lucro Real            => R$ {formatted_string:>5}\n")
+    gera_relatorio()
