@@ -119,7 +119,7 @@ for __cont__ in range(5):
 
         f"\n\n***** Relatório do faturamento por Ano. {__cont__} *******\n\n"
         f"Faturamento Anual Previsto é    => R${faturamento_anual:>13}\n"
-        f"Faturamento de um terço Anual é => R${fat_terco_ano:>13}\n"
+        f"Faturamento de um terço Anual é => R${fat_terco_anual:>13}\n"
         f"Multa por atraso no Anuais      => R${atrasa_devolucao:>13}\n"
 
         f"\n\n***** Relatório do estado da frota. {__cont__} ********\n\n"
