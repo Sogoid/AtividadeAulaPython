@@ -63,19 +63,19 @@ def luc_final(prec_venda, __prec_final__):
     return __lucro_real__
 
 
-def gera_relatorio():
+def gera_relatorio(cont, codigo_produto, nome_produto, valor_compra, lucro, preco_venda, prec_final, lucro_real):
     """Função para gerar relatório"""
 
-    titulo_sistema(f"Relatório do ajuste de Preços. N°{__cont__}")
+    titulo_sistema(f"Relatório do ajuste de Preços. N°{cont}")
 
     print(
-        f"\nCódigo do Produto     => {__codigo_produto__}\n"
+        f"\nCódigo do Produto     => {codigo_produto}\n"
         f"Nome do Produto       => {nome_produto.upper()}\n"
         f"Lucro mínimo          => {__lucro_minimo__:.0%}\n"
         f"Desconto de           => {__desconto__:.0%}\n"
     )
 
-    formatted_string = get_format(__valor_compra__)
+    formatted_string = get_format(valor_compra)
     print(f"Valor de Compra       => R$ {formatted_string:>5}")
 
     formatted_string = get_format(lucro)
@@ -108,36 +108,42 @@ produto = [
     "Batata",
 ]
 
-__cont__ = 0
-
 __desconto__ = 0.10
 
 __lucro_minimo__ = 0.33
 
-while __cont__ <= 9:
-    __cont__ = __cont__ + 1
 
-    titulo_sistema(f"Informe os dados do Produto. N°{__cont__}")
+def app():
+    """Função programa principal"""
+    cont = 0
+    while 9 >= cont:
+        cont = cont + 1
 
-    __codigo_produto__ = __cont__
-    print(f"\nCódigo do produto: {__codigo_produto__}")
+        titulo_sistema(f"Informe os dados do Produto. N°{cont}")
 
-    nome_produto = produto[random.randrange(len(produto))]
-    print(f"Nome do Produto: {nome_produto.upper()}")
+        codigo_produto = cont
+        print(f"\nCódigo do produto: {codigo_produto}")
 
-    __valor_compra__ = float(random.uniform(1.5, 20))
-    print(f"Valor do produto: R$ {__valor_compra__:.2f}")
+        nome_produto = produto[random.randrange(len(produto))]
+        print(f"Nome do Produto: {nome_produto.upper()}")
 
-    print(f"Valor do desconto: {__desconto__:.0%}")
+        valor_compra = float(random.uniform(1.5, 20))
+        print(f"Valor do produto: R$ {valor_compra:.2f}")
 
-    print(f"Entre com o Lucro Mínimo: {__lucro_minimo__:.0%}\n")
+        print(f"Valor do desconto: {__desconto__:.0%}")
 
-    preco_venda = calculo_prec_venda(__valor_compra__, __lucro_minimo__)
+        print(f"Entre com o Lucro Mínimo: {__lucro_minimo__:.0%}\n")
 
-    lucro = lucro_venda(__valor_compra__, preco_venda)
+        preco_venda = calculo_prec_venda(valor_compra, __lucro_minimo__)
 
-    prec_final = calculo_desconto(preco_venda, __desconto__)
+        lucro = lucro_venda(valor_compra, preco_venda)
 
-    lucro_real = luc_final(preco_venda, prec_final)
+        prec_final = calculo_desconto(preco_venda, __desconto__)
 
-    gera_relatorio()
+        lucro_real = luc_final(preco_venda, prec_final)
+
+        gera_relatorio(cont, codigo_produto, nome_produto, valor_compra, lucro, preco_venda, prec_final, lucro_real)
+
+
+if __name__ == "__main__":
+    app()
