@@ -33,10 +33,15 @@ def cadastro(dados):
     continuar = "s"
 
     while continuar == "s":
-
         informacoes_usuario = []
 
-        matricula = len(dados) + 1
+        print(f"Current data: {dados}")
+
+        if dados:
+            ultima_matricula = int(dados[-1][0])
+            matricula = ultima_matricula + 1
+        else:
+            matricula = 1
         informacoes_usuario.append(matricula)
         print(f"Matricula: {matricula}")
 
@@ -85,7 +90,7 @@ def cadastro(dados):
         # Chama a função verifica_senha passando os dados como argumento
         verifica_senha(dados)
 
-        continuar = input("Deseja cadastrar outro usuário? (s/n) ")
+        continuar = input("\nDeseja cadastrar outro usuário? (s/n) ")
 
     return dados
 
@@ -105,15 +110,15 @@ def verifica_senha(dados):
             usuario[-2] = senhas
             usuario[-1] = rep_senhas
 
-            print("\nSenha cadastrada com sucesso!"
-                  "\nCadastro realizado com Sucesso!!\n")
+    print("\nSenha cadastrada com sucesso!"
+          "\nCadastro realizado com Sucesso!!\n")
 
 
 def atualizar(dados):
     """Função para atualizar os dados de um usuário"""
-    nome = input("\nDigite o nome do usuário que deseja atualizar: ")
+    matricula = int(input("\nDigite o matricula do usuário que deseja atualizar: "))
     for usuario in dados:
-        if usuario[1] == nome:
+        if usuario[0] == matricula:
             print("Usuário encontrado. Escolha a opção abaixo para atualize as informações do usuário:")
             continuar = "s"
             while continuar == 's' or continuar == 'S':
@@ -128,6 +133,7 @@ def atualizar(dados):
                 match opcao:
                     case 1:
                         usuario[2] = input("Novo apelido: ")
+                        usuario[2] = usuario[2].upper()
                         print("Dados atualizados com sucesso!")
                         break
                     case 2:
@@ -140,10 +146,14 @@ def atualizar(dados):
                         break
                     case 4:
                         usuario[6] = input("Novo endereço: ")
+                        usuario[6] = usuario[6].upper()
                         usuario[7] = int(input("Novo número: "))
                         usuario[8] = input("Novo bairro: ")
+                        usuario[8] = usuario[8].upper()
                         usuario[9] = input("Nova cidade: ")
+                        usuario[9] = usuario[9].upper()
                         usuario[10] = input("Novo estado: ")
+                        usuario[10] = usuario[10].upper()
                         usuario[11] = input("Novo CEP: ")
                         print("Dados atualizados com sucesso!")
                         break
@@ -154,6 +164,44 @@ def atualizar(dados):
 
             else:
                 print("\nUsuário não encontrado.")
+
+
+def excluir_cadastro(dados):
+    """Função para excluir cadastro do cliente na lista de vetor"""
+    matricula = int(input("\nDigite o matricula do usuário que deseja Excluir: "))
+    for usuario in dados:
+        if usuario[0] == matricula:
+            print("Usuário encontrado. Escolha a opção abaixo para Excluir as informações do usuário:")
+            continuar = "s"
+            continuar = continuar.casefold()
+            while continuar == 's':
+                print("\nEscolha uma das opções abaixo:\n")
+                print('''
+                1 – Excluir ;\n
+                2 - Sair.''')
+                opcao = int(input("\nDigite uma opção: "))
+                match opcao:
+                    case 1:
+                        for i, sub_list in enumerate(dados):
+                            if matricula in sub_list:
+                                del dados[i]
+                                print(f"Updated list: {dados}")
+                                break
+                        else:
+                            print("Value not found")
+                    case 2:
+                        print("\nVocê saiu com Sucesso!!")
+                        break
+                continuar = input("\nDeseja continuar S/N: ")
+                while continuar.casefold() not in ['s', 'n']:
+                    print("Entrada inválida. Por favor, digite 's' para continuar ou 'n' para sair.")
+                    continuar = input("\nDeseja continuar S/N: ")
+        else:
+            print("\nUsuário não encontrado.")
+
+        # meu_vetor = [1, 2, 3]
+        # meu_vetor.remove(2)
+        # print(meu_vetor)
 
 
 def gera_relatorio(dados):
@@ -212,8 +260,9 @@ def menu_opcao(dados_cadastrados):
         print('''
         1 – Cadastro ;\n
         2 – Atualizar ;\n
-        3 – Relatorio; \n
-        4 - Sair.''')
+        3 - Excluir;\n
+        4 – Relatorio; \n
+        5 - Sair.''')
         opcao = int(input("\nDigite uma opção: "))
         match opcao:
             case 1:
@@ -221,14 +270,19 @@ def menu_opcao(dados_cadastrados):
             case 2:
                 atualizar(dados_cadastrados)
             case 3:
+                excluir_cadastro(dados_cadastrados)
+            case 4:
                 if not dados_cadastrados:
                     print("Nenhum usuário cadastrado.")
                 else:
                     gera_relatorio(dados_cadastrados)
-            case 4:
+            case 5:
                 print("\nVocê saiu com Sucesso!!")
                 break
         continuar = input("\nDeseja continuar S/N: ")
+        while continuar.casefold() not in ['s', 'n']:
+            print("Entrada inválida. Por favor, digite 's' para continuar ou 'n' para sair.")
+            continuar = input("\nDeseja continuar S/N: ")
 
 
 def app():
