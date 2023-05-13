@@ -31,25 +31,24 @@ def cadastro(dados):
     titulo_sistema("Informe os dados para cadastro do cliente.")
     # Cria uma lista vazia para armazenar dados
     continuar = "s"
-    mat = 0
+
     while continuar == "s":
+
         informacoes_usuario = []
 
-        mat += 1
-
-        matricula = mat
+        matricula = len(dados) + 1
         informacoes_usuario.append(matricula)
         print(f"Matricula: {matricula}")
 
         nome = input("Nome: ")
-        informacoes_usuario.append(nome)
+        informacoes_usuario.append(nome.upper())
 
         apelido = input("Apelido: ")
-        informacoes_usuario.append(apelido)
+        informacoes_usuario.append(apelido.upper())
 
         print("Gênero:")
         genero = input("Masculino (M) / Feminino (F): ")
-        informacoes_usuario.append(genero)
+        informacoes_usuario.append(genero.upper())
 
         telefone = int(input("Telefone: "))
         informacoes_usuario.append(telefone)
@@ -58,19 +57,19 @@ def cadastro(dados):
         informacoes_usuario.append(email)
 
         endereco = input("Endereço: ")
-        informacoes_usuario.append(endereco)
+        informacoes_usuario.append(endereco.upper())
 
         numero = int(input("Nº: "))
         informacoes_usuario.append(numero)
 
-        barrio = input("Barrio: ")
-        informacoes_usuario.append(barrio)
+        bairro = input("Bairro: ")
+        informacoes_usuario.append(bairro.upper())
 
         cidade = input("Cidade: ")
-        informacoes_usuario.append(cidade)
+        informacoes_usuario.append(cidade.upper())
 
         estado = input("Estado: ")
-        informacoes_usuario.append(estado)
+        informacoes_usuario.append(estado.upper())
 
         cep = input("CEP: ")
         informacoes_usuario.append(cep)
@@ -112,20 +111,20 @@ def verifica_senha(dados):
 
 def atualizar(dados):
     """Função para atualizar os dados de um usuário"""
-    nome = input("Digite o nome do usuário que deseja atualizar: ")
+    nome = input("\nDigite o nome do usuário que deseja atualizar: ")
     for usuario in dados:
         if usuario[1] == nome:
             print("Usuário encontrado. Escolha a opção abaixo para atualize as informações do usuário:")
             continuar = "s"
             while continuar == 's' or continuar == 'S':
-                print("Escolha uma das opções abaixo:")
+                print("\nEscolha uma das opções abaixo:\n")
                 print('''
                     1 – Apelido ;\n
                     2 – Telefone ;\n
                     3 – E-mail; \n
                     4 - Endereço; \n
                     5 - Sair.''')
-                opcao = int(input("Digite uma opção: "))
+                opcao = int(input("\nDigite uma opção: "))
                 match opcao:
                     case 1:
                         usuario[2] = input("Novo apelido: ")
@@ -142,19 +141,19 @@ def atualizar(dados):
                     case 4:
                         usuario[6] = input("Novo endereço: ")
                         usuario[7] = int(input("Novo número: "))
-                        usuario[8] = input("Novo barrio: ")
+                        usuario[8] = input("Novo bairro: ")
                         usuario[9] = input("Nova cidade: ")
                         usuario[10] = input("Novo estado: ")
                         usuario[11] = input("Novo CEP: ")
                         print("Dados atualizados com sucesso!")
                         break
                     case 5:
-                        print("Você saiu com Sucesso!!")
+                        print("\nVocê saiu com Sucesso!!")
                         break
-                continuar = input("Deseja continuar S/N: ")
+                continuar = input("\nDeseja continuar S/N: ")
 
-        else:
-            print("Usuário não encontrado.")
+            else:
+                print("\nUsuário não encontrado.")
 
 
 def gera_relatorio(dados):
@@ -162,8 +161,21 @@ def gera_relatorio(dados):
     titulo_sistema("Relatório do cadastro do cliente")
 
     # Cria a lista com os títulos das colunas
-    cabecalho = ["Matricula", "Nome", "Apelido", "Gênero", "Telefone", "E-mail", "Endereço", "Nº", "Barrio", "Cidade",
-                 "Estado", "CEP", "Senha"]
+    cabecalho = ["MATRICULA", "NOME", "APELIDO", "GÊNERO", "TELEFONE", "E-MAIL", "ENDEREÇO", "Nº", "BAIRRO", "CIDADE",
+                 "ESTADO", "CEP", "SENHA"]
+
+    # Verifica se a lista dados está vazia
+    if len(dados) == 0:
+        # A lista dados está vazia
+        # Aqui você pode tratar esse caso de maneira adequada
+        print("A lista dados está vazia")
+        return
+
+    # Verifica se todas as linhas têm o mesmo número de colunas que a lista cabeçalho
+    for linha in dados:
+        if len(linha) != len(cabecalho):
+            # Adiciona elementos vazios à linha
+            linha.extend([""] * (len(cabecalho) - len(linha)))
 
     # Calcula a largura máxima de cada coluna
     largura_colunas = [max(len(str(dado)) for dado in coluna) for coluna in zip(cabecalho, *dados)]
@@ -178,24 +190,31 @@ def gera_relatorio(dados):
         print("-" * largura, end="-+-")
     print()
 
-    # Imprime os dados da tabela
-    for linha in dados:
-        for i, dado in enumerate(linha):
-            print(f"{dado:{largura_colunas[i]}}", end=" | ")
-        print()
+    # Verifica se a lista largura_colunas tem o mesmo comprimento que a lista cabeçalho
+    if len(largura_colunas) != len(cabecalho):
+        print(
+            f"Erro: A lista largura_colunas tem comprimento {len(largura_colunas)}, "
+            f"mas deveria ter o mesmo comprimento que a lista cabeçalho ({len(cabecalho)})")
+
+    else:
+        # Imprime os dados da tabela
+        for linha in dados:
+            for dado, largura in zip(linha, largura_colunas):
+                print(f"{dado:{largura}}", end=" | ")
+            print()
 
 
 def menu_opcao(dados_cadastrados):
     """Função criada para ser menu"""
     continuar = "s"
     while continuar == 's' or continuar == 'S':
-        print("Escolha uma das opções abaixo:")
+        print("\nEscolha uma das opções abaixo:")
         print('''
         1 – Cadastro ;\n
         2 – Atualizar ;\n
         3 – Relatorio; \n
         4 - Sair.''')
-        opcao = int(input("Digite uma opção: "))
+        opcao = int(input("\nDigite uma opção: "))
         match opcao:
             case 1:
                 dados_cadastrados = cadastro(dados_cadastrados)
@@ -207,9 +226,9 @@ def menu_opcao(dados_cadastrados):
                 else:
                     gera_relatorio(dados_cadastrados)
             case 4:
-                print("Você saiu com Sucesso!!")
+                print("\nVocê saiu com Sucesso!!")
                 break
-        continuar = input("Deseja continuar S/N: ")
+        continuar = input("\nDeseja continuar S/N: ")
 
 
 def app():

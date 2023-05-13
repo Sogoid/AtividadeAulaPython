@@ -27,25 +27,43 @@ def titulo_sistema(tmsg):
     linha_titulo(tmsg)
 
 
-def app():
-    """Função programa principal"""
-    titulo_sistema("Sistema para Conversão de Escalas de temperatura.")
-
+def celsius():
+    """Função para calcular o valor de Celsius."""
     temperatura = []
+    for i in range(1):
+        c = random.randint(0, 2)
+        temperatura.append(c)
 
-    for i in range(10):
-        celsius = random.randint(1, 100)
-        temperatura.append(celsius)
-
-        titulo_sistema("Informe os dados para o Cálculo.")
+        titulo_sistema("Informe os dados para o Cálculo em Celsius.")
 
         print(f"\nEntre com valor da temperatura em Celsius => {temperatura[i]}°C")
 
-        conversor = float(9.5)
-
-        fahrenheit = (temperatura[i] * conversor) + 32
+        fahrenheit = (temperatura[i] * 9 / 5) + 32
 
         print(f"\nValor de Fahrenheit é => {fahrenheit:.0f}°F\n")
+
+
+def fahrenheits():
+    """Função para calcular fahrenheits"""
+    f = []
+    for i in range(1):
+        fahrenheit = random.randint(0, 2)
+        f.append(fahrenheit)
+
+        titulo_sistema("Informe os dados para o Cálculo em Fahrenheit.")
+
+        print(f"\nEntre com valor da temperatura em Fahrenheit => {f[i]}°F")
+
+        c = (f[i] - 32) * 5 / 9
+
+        print(f"\nValor de Celsius é => {c:.0f}°C\n")
+
+
+def app():
+    """Função programa principal"""
+    titulo_sistema("Sistema para Conversão de Escalas de temperatura.")
+    celsius()
+    fahrenheits()
 
 
 if __name__ == "__main__":
