@@ -129,7 +129,7 @@ def atualizar(dados):
                     3 – E-mail; \n
                     4 - Endereço; \n
                     5 - Sair.''')
-                opcao = int(input("\nDigite uma opção: "))
+                opcao = int(input("\nDigite uma opção que deseja atualizar: "))
                 match opcao:
                     case 1:
                         usuario[2] = input("Novo apelido: ")
@@ -179,7 +179,7 @@ def excluir_cadastro(dados):
                 print('''
                 1 – Excluir ;\n
                 2 - Sair.''')
-                opcao = int(input("\nDigite uma opção: "))
+                opcao = int(input("\nDigite uma opção para excluir ou sair: "))
                 match opcao:
                     case 1:
                         for i, sub_list in enumerate(dados):
@@ -192,10 +192,10 @@ def excluir_cadastro(dados):
                     case 2:
                         print("\nVocê saiu com Sucesso!!")
                         break
-                continuar = input("\nDeseja continuar S/N: ")
+                continuar = input("\nDeseja continuar a excluir usuários? S/N: ")
                 while continuar.casefold() not in ['s', 'n']:
                     print("Entrada inválida. Por favor, digite 's' para continuar ou 'n' para sair.")
-                    continuar = input("\nDeseja continuar S/N: ")
+                    continuar = input("\nDeseja voltar para o menu inicial? S/N: ")
         else:
             print("\nUsuário não encontrado.")
 
@@ -263,7 +263,7 @@ def menu_opcao(dados_cadastrados):
         3 - Excluir;\n
         4 – Relatorio; \n
         5 - Sair.''')
-        opcao = int(input("\nDigite uma opção: "))
+        opcao = int(input("\nDigite uma opção para interagir: "))
         match opcao:
             case 1:
                 dados_cadastrados = cadastro(dados_cadastrados)
@@ -279,10 +279,10 @@ def menu_opcao(dados_cadastrados):
             case 5:
                 print("\nVocê saiu com Sucesso!!")
                 break
-        continuar = input("\nDeseja continuar S/N: ")
+        continuar = input("\nDeseja voltar para o menu inicial? S/N: ")
         while continuar.casefold() not in ['s', 'n']:
             print("Entrada inválida. Por favor, digite 's' para continuar ou 'n' para sair.")
-            continuar = input("\nDeseja continuar S/N: ")
+            continuar = input("\nDeseja voltar para o menu inicial? S/N: ")
 
 
 def app():
