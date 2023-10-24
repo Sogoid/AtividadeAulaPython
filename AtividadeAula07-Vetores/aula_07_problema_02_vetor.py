@@ -116,10 +116,12 @@ def verifica_senha(dados):
 
 def atualizar(dados):
     """Função para atualizar os dados de um usuário"""
-    matricula = int(input("\nDigite o matricula do usuário que deseja atualizar: "))
+    matricula = int(
+        input("\nDigite o matricula do usuário que deseja atualizar: "))
     for usuario in dados:
         if usuario[0] == matricula:
-            print("Usuário encontrado. Escolha a opção abaixo para atualize as informações do usuário:")
+            print(
+                "Usuário encontrado. Escolha a opção abaixo para atualize as informações do usuário:")
             continuar = "s"
             while continuar == 's' or continuar == 'S':
                 print("\nEscolha uma das opções abaixo:\n")
@@ -168,10 +170,12 @@ def atualizar(dados):
 
 def excluir_cadastro(dados):
     """Função para excluir cadastro do cliente na lista de vetor"""
-    matricula = int(input("\nDigite o matricula do usuário que deseja Excluir: "))
+    matricula = int(
+        input("\nDigite o matricula do usuário que deseja Excluir: "))
     for usuario in dados:
         if usuario[0] == matricula:
-            print("Usuário encontrado. Escolha a opção abaixo para Excluir as informações do usuário:")
+            print(
+                "Usuário encontrado. Escolha a opção abaixo para Excluir as informações do usuário:")
             continuar = "s"
             continuar = continuar.casefold()
             while continuar == 's':
@@ -192,10 +196,13 @@ def excluir_cadastro(dados):
                     case 2:
                         print("\nVocê saiu com Sucesso!!")
                         break
-                continuar = input("\nDeseja continuar a excluir usuários? S/N: ")
+                continuar = input(
+                    "\nDeseja continuar a excluir usuários? S/N: ")
                 while continuar.casefold() not in ['s', 'n']:
-                    print("Entrada inválida. Por favor, digite 's' para continuar ou 'n' para sair.")
-                    continuar = input("\nDeseja voltar para o menu inicial? S/N: ")
+                    print(
+                        "Entrada inválida. Por favor, digite 's' para continuar ou 'n' para sair.")
+                    continuar = input(
+                        "\nDeseja voltar para o menu inicial? S/N: ")
         else:
             print("\nUsuário não encontrado.")
 
@@ -209,7 +216,8 @@ def gera_relatorio(dados):
     titulo_sistema("Relatório do cadastro do cliente")
 
     # Cria a lista com os títulos das colunas
-    cabecalho = ["MATRICULA", "NOME", "APELIDO", "GÊNERO", "TELEFONE", "E-MAIL", "ENDEREÇO", "Nº", "BAIRRO", "CIDADE",
+    cabecalho = ["MATRICULA", "NOME", "APELIDO", "GÊNERO", "TELEFONE", "E-MAIL",
+                 "ENDEREÇO", "Nº", "BAIRRO", "CIDADE",
                  "ESTADO", "CEP", "SENHA"]
 
     # Verifica se a lista dados está vazia
@@ -226,11 +234,12 @@ def gera_relatorio(dados):
             linha.extend([""] * (len(cabecalho) - len(linha)))
 
     # Calcula a largura máxima de cada coluna
-    largura_colunas = [max(len(str(dado)) for dado in coluna) for coluna in zip(cabecalho, *dados)]
+    largura_colunas = [max(len(str(dado)) for dado in coluna)
+                       for coluna in zip(cabecalho, *dados)]
 
     # Imprime o cabeçalho da tabela
     for i, titulo in enumerate(cabecalho):
-        print(f"{titulo:{largura_colunas[i]}}", end=" | ")
+        print(f"{titulo: {largura_colunas[i]}}", end=" | ")
     print()
 
     # Imprime uma linha separadora
@@ -241,14 +250,15 @@ def gera_relatorio(dados):
     # Verifica se a lista largura_colunas tem o mesmo comprimento que a lista cabeçalho
     if len(largura_colunas) != len(cabecalho):
         print(
-            f"Erro: A lista largura_colunas tem comprimento {len(largura_colunas)}, "
+            f"Erro: A lista largura_colunas tem comprimento {
+                len(largura_colunas)}, "
             f"mas deveria ter o mesmo comprimento que a lista cabeçalho ({len(cabecalho)})")
 
     else:
         # Imprime os dados da tabela
         for linha in dados:
             for dado, largura in zip(linha, largura_colunas):
-                print(f"{dado:{largura}}", end=" | ")
+                print(f"{dado: {largura}}", end=" | ")
             print()
 
 
@@ -281,7 +291,8 @@ def menu_opcao(dados_cadastrados):
                 break
         continuar = input("\nDeseja voltar para o menu inicial? S/N: ")
         while continuar.casefold() not in ['s', 'n']:
-            print("Entrada inválida. Por favor, digite 's' para continuar ou 'n' para sair.")
+            print("""Entrada inválida. Por favor, digite 's' para continuar
+                   ou 'n' para sair.""")
             continuar = input("\nDeseja voltar para o menu inicial? S/N: ")
 
 

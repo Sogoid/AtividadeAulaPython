@@ -2,3 +2,5 @@
 .idea
 .venv
 .gitignore
+venv/*
+venv
