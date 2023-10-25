@@ -20,7 +20,11 @@ Link do repositório no GitHub para analisar o código
 # 35.0 a 39.9: Obesidade Grau II (severa).
 # 40.0 ou superior: Obesidade Grau III (mórbida).
 
+import os
+import platform
 import random
+import sys
+import time
 
 
 def logo():
@@ -61,15 +65,61 @@ def calculo(peso1, altura1):
     return resultado
 
 
+def clear_terminal():
+    """Função para verificar o sistema operacional e limpar o terminal
+    Obs.: Esta função não funciona no terminal do PyCharm somente no terminal
+    do integrado.
+    """
+    if platform.system() == "Windows":
+        os.system("cls")
+    else:
+        print("\033[H\033[J")
+
+
+def tempo_sleep(total):
+    """Este código define uma função chamada tempo_sleep que recebe um
+    argumento total. A função cria uma barra de progresso simples, atualizada
+    a cada iteração do loop for.
+    Dentro do loop for, a função faz o seguinte:
+    Faz uma pausa de 0,1 segundo usando a função sleep do módulo time.
+    Move o cursor para o início da linha atual usando o caractere de escape \r.
+    Usa uma f-string para formatar a barra de progresso e a porcentagem de
+    conclusão. A barra de progresso é criada repetindo o caractere = um número
+    de vezes proporcional à porcentagem de conclusão. A porcentagem de
+    conclusão é calculada dividindo o índice atual do loop pelo valor total e
+    multiplicando por 100.
+    Usa a função flush do objeto sys.stdout para forçar a atualização da saída.
+    Depois que o loop for é concluído, a função move o cursor para o início da
+    linha atual novamente e exibe a barra de progresso completa (100%) usando
+    outra f-string. Por fim, a função chama a função print para mover o cursor
+    para a próxima linha.
+    Quando você chama a função progress_bar com um argumento numérico, ela
+    exibe uma barra de progresso que é atualizada ao longo do tempo até
+    atingir 100%. 😊"""
+
+    for i in range(total):
+        time.sleep(0.1)
+        sys.stdout.write("\r")
+        sys.stdout.write(
+            " " * 12 + f"[{'=' * int(20 * i / total):<20}]" f"{int(100 * i / total)}%"
+        )
+        sys.stdout.flush()
+    sys.stdout.write("\r")
+    sys.stdout.write(" " * 12 + f"[{'=' * 20:<20}] 100%")
+    sys.stdout.flush()
+    print()
+
+
 def menu_option(info_user):
     """Função criada para ser menu"""
-    continuar = "s"
-    while continuar in ('s', 'S'):
+    while True:
         print("\nEscolha uma das opções abaixo:")
-        print('''
+        print(
+            """
         1 - Cadastro ;\n
         2 - Relatório; \n
-        3 - Sair.''')
+        3 - Sair."""
+        )
         option = int(input("\nDigite uma opção para interagir: "))
         match option:
             case 1:
@@ -78,23 +128,68 @@ def menu_option(info_user):
                 if not info_user:
                     print("Nenhum usuário cadastrado.")
                 else:
+                    clear_terminal()
                     for user in info_user:
                         report(user)
             case 3:
+                clear_terminal()
+                logo()
+                print("\nSaindo do sistema por favor aguarde!")
+                tempo_sleep(50)
                 print("\nVocê saiu com Sucesso!!")
-                break
-        continuar = input("\nDeseja voltar para o menu inicial? S/N: ")
-        if continuar.casefold() != "s":
+                return
+
+        if not should_continue():
+            break
+
+
+def should_continue():
+    """
+    É uma função auxiliar que interage com o usuário para determinar
+    se o programa deve continuar ou não
+    """
+    while True:
+        continuar = input("\nDeseja voltar para o menu inicial? S/N: ").casefold()
+        if continuar == "s":
+            return True
+        elif continuar == "n":
+            clear_terminal()
+            logo()
+            print("\nSaindo do sistema por favor aguarde!")
+            tempo_sleep(50)
             print("\nVocê saiu com Sucesso!!")
+            break
+
         else:
-            while continuar.casefold() not in ['s', 'n']:
-                print("""Entrada inválida. Por favor, digite 's' para continuar
-                    ou 'n' para sair.""")
-                continuar = input("\nDeseja voltar para o menu inicial? S/N: ")
+            print(
+                "\nEntrada inválida."
+                " Por favor, digite 's' para continuar ou 'n' para sair."
+            )
+
+
+def go_on_cadastre():
+    """
+    Função para perguntar se continuar fazendo cadastro.
+    """
+    while True:
+        continuar_cadastro = input("\nDeseja Cadastrar outro usuário? S/N: ").casefold()
+        if continuar_cadastro in ["s", "n"]:
+            break
+        print(
+            "\nEntrada inválida."
+            "Por favor, digite 's' para continuar ou 'n' para sair."
+        )
+
+    if continuar_cadastro == "n":
+        return should_continue()
+
+    return True
 
 
 def cadastro(dados):
     """Função programa principal"""
+    clear_terminal()
+    logo()
 
     pessoas_nome = {
         1: "Wanderson",
@@ -122,18 +217,15 @@ def cadastro(dados):
         10: "Morais",
     }
 
-    continuar = "s"
-
-    while continuar.casefold() == 's':
-
+    while True:
         info_user = {}
 
         if dados:
-            ultima_matricula = ultima_matricula = dados[-1]['matricula']
+            ultima_matricula = ultima_matricula = dados[-1]["matricula"]
             matricula = ultima_matricula + 1
         else:
             matricula = 1
-        info_user['matricula'] = matricula
+        info_user["matricula"] = matricula
         print(f"Matricula: {matricula}")
 
         titulo_sistema(f"Informe os dados do paciente {matricula}")
@@ -142,29 +234,33 @@ def cadastro(dados):
         sobrenome = random.choice(list(pessoas_sobrenome.values()))
 
         # Combinação do nome e sobrenome
-        nome_completo = nome + ' ' + sobrenome
-        info_user['nome_completo'] = nome_completo.upper()
+        nome_completo = nome + " " + sobrenome
+        info_user["nome_completo"] = nome_completo.upper()
         print(f"Paciente: {nome_completo}")
 
         peso = float(random.randint(70, 100))
-        info_user['peso'] = peso
-        print(f"Peso informado: {peso: .2f}")
+        info_user["peso"] = peso
+        print(f"Peso informado: {peso:.2f}")
 
         altura = float(random.uniform(1.5, 2))
-        info_user['altura'] = altura
-        print(f"Atura informado: {altura: .2f}")
+        info_user["altura"] = altura
+        print(f"Altura informada: {altura:.2f}")
 
         idade = int(random.randint(30, 60))
-        info_user['idade'] = idade
-        print(f"Idade informado: {idade}")
+        info_user["idade"] = idade
+        print(f"Idade informada: {idade}")
 
         imc = calculo(peso, altura)
-        info_user['imc'] = imc
+        info_user["imc"] = imc
 
         # Adicione esta linha para adicionar info_user à lista dados
         dados.append(info_user)
 
-        continuar = input("\nDeseja Cadastrar outro usuário? S/N: ")
+        if not go_on_cadastre():
+            break
+
+        clear_terminal()
+        logo()
     return dados
 
 
@@ -173,6 +269,7 @@ def report(info_user):
     Mostra em qual o valor de IMC com informações se o mesmo está
     acima ou não do peso.
     """
+    logo()
     titulo_sistema(f"Ficha médica do paciente {info_user['matricula']}")
 
     print(
@@ -195,19 +292,21 @@ def report(info_user):
         (34.9, "Obesidade Grau I."),
         (39.9, "Obesidade Grau II (severa)."),
         (40.0, "ou superior: Obesidade Grau III (mórbida)."),
-        (float('inf'), "esta abaixo do peso com")
+        (float("inf"), "esta abaixo do peso com"),
     ]
 
-    for i in range(len(imc_ranges)-1):
-        if imc_ranges[i][0] <= info_user['imc'] < imc_ranges[i+1][0]:
-            print(f"\nPaciente: {info_user['nome_completo']} "
-                  f"{imc_ranges[i][1]}{info_user['imc']: .2f}Kg.\n")
+    for i in range(len(imc_ranges) - 1):
+        if imc_ranges[i][0] <= info_user["imc"] < imc_ranges[i + 1][0]:
+            print(
+                f"\nPaciente: {info_user['nome_completo']} "
+                f"{imc_ranges[i][1]}{info_user['imc']: .2f}Kg.\n"
+            )
             break
 
 
 def app():
-    logo()
     """Função programa principal"""
+    logo()
     titulo_sistema("Programa para Calculo do IMC dos Paciente")
     # Armazena os dados do cadastro em uma variável
     info_user = []
