@@ -139,27 +139,30 @@ def menu_option(info_user):
                 print("\nVocê saiu com Sucesso!!")
                 return
 
-        if not should_continue():
+        if not should_continue(info_user):
             break
 
 
-def should_continue():
+def should_continue(info_user)
     """
     É uma função auxiliar que interage com o usuário para determinar
     se o programa deve continuar ou não
     """
-    while True:
-        continuar = input("\nDeseja voltar para o menu inicial? S/N: ").casefold()
+    continuar = True
+
+    while continuar:
+        continuar = (
+            input("\nDeseja voltar para o menu inicial? S/N: ").strip().casefold()
+        )
         if continuar == "s":
-            return True
+            return menu_option(info_user)
         elif continuar == "n":
             clear_terminal()
             logo()
             print("\nSaindo do sistema por favor aguarde!")
             tempo_sleep(50)
             print("\nVocê saiu com Sucesso!!")
-            break
-
+            return False
         else:
             print(
                 "\nEntrada inválida."
@@ -172,7 +175,9 @@ def go_on_cadastre():
     Função para perguntar se continuar fazendo cadastro.
     """
     while True:
-        continuar_cadastro = input("\nDeseja Cadastrar outro usuário? S/N: ").casefold()
+        continuar_cadastro = (
+            input("\nDeseja Cadastrar outro usuário? S/N: ").strip().casefold()
+        )
         if continuar_cadastro in ["s", "n"]:
             break
         print(
