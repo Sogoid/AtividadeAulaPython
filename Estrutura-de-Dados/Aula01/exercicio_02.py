@@ -28,7 +28,7 @@ import time
 
 
 def logo():
-    "Logo do sistema"
+    """Logo do sistema"""
     print(
         """
 ███████╗██╗███████╗████████╗███████╗███╗   ███╗ █████╗     ██╗███╗   ███╗ ██████╗
@@ -143,7 +143,7 @@ def menu_option(info_user):
             break
 
 
-def should_continue(info_user)
+def should_continue(info_user):
     """
     É uma função auxiliar que interage com o usuário para determinar
     se o programa deve continuar ou não
